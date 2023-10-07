@@ -1,0 +1,229 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    font-size: 1rem;
+    background-color:bisque ;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+header section h1 {
+    font-style: italic;
+}
+
+header, footer {
+    position: sticky;
+    z-index: 1;
+}
+
+header {
+    background-color: #8f8282;
+    display: flex;
+    color: whitesmoke;
+    justify-content: space-between;
+}
+
+nav:hover {
+    display: block;
+}
+
+nav {
+    display: none;
+    text-align: center;
+    padding: .2em;
+}
+
+
+nav ul {
+    flex-flow: cloumn nowrap;
+    list-style-type: none;
+    gap: .6em;
+}
+
+.click {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    align-items: center;
+    background-color: inherit;
+    border: 0;
+}
+
+.click div,
+.click div::before,
+.click div::after {
+    background-color: rgba(106, 8, 8, 0.686);
+    width: 40px;
+    height: 5px;
+    border-radius: 4px;
+    transition: all .6s;
+}
+
+button div::before {
+    content: "";
+    position: absolute;
+    transform: translate(-20px, -9px);
+}
+
+button div::after {
+    content: "";
+    position:absolute;
+    transform: translate(-20px, 9px);
+}
+
+button:hover div {
+    background-color: transparent;
+}
+button:hover div::before {
+    transform: translateX(-25px) rotate(45deg);
+}
+button:hover div::after {
+    transform: translateX(-25px) rotate(-45deg);
+}
+
+
+main {
+    flex-grow: 1;
+}
+
+.article, .friends {
+    min-height: 100vh;
+    border-bottom: 2px dashed rgb(230, 160, 31);
+}
+
+.article p {
+    margin-inline: 1em;
+    color: rgba(26, 18, 18, 0.592);
+}
+
+.article h2 {
+    padding: .4rem;
+    text-align: center;
+    font-style: italic;
+    animation: slideWelcome 5s ease-in-out .4s;
+    position: relative;
+    top: -80px;
+    animation-fill-mode: forwards;
+    width: 30vw;
+}
+
+.friends {
+    display: flex;
+    justify-content: space-evenly;
+    gap: .7em;
+    flex-flow: row wrap;
+}
+
+.friends div {
+    background-color: rgba(56, 59, 54, 0.399);
+    margin: 1em auto;
+    width: clamp(100px, 40vh, 250px);
+    height: clamp(100px, 40vw, 300px);
+    position: relative;
+    border-radius: 10px;
+}
+
+
+.friends div:hover {
+    transform: scale(.8);
+}
+
+.friends div h3 {
+    text-align: center;
+    border-bottom: 2px solid #8f8282;
+}
+
+.friends div p {
+    margin-inline: .5rem;
+    line-height: 1.2em;
+}
+
+.friends div button {
+    position: absolute;
+    bottom: 10px;
+    left: 40%;
+    color: whitesmoke;
+    background-color: rgb(150, 167, 161);
+}
+
+footer {
+    bottom: 0;
+    background-color: #8f8282;
+    text-align: center;
+    padding-block: .5em;
+    color: whitesmoke;
+}
+
+@keyframes slideWelcome {
+    0% {
+        transform: translateY(-50px) translateX(50px) scale(.5) rotate(270deg) ;
+    }
+    20% {
+        transform: translateY(80px) translateX(120%);
+    }
+    80% {
+        transform: scale(.7) rotate(360deg)  translateY(100px) translateX(100px);
+        color: hsla(0, 100%, 50%, 0.15);
+        transition-property: color;
+        transition-duration: 2s;
+    }
+    100% {
+        transform: scale(1.2) rotate(360deg)  translateY(70px) translateX(90%);
+}
+}
+
+@media screen and (min-aspect-ratio: 7/4) {
+     
+}
+@media screen and (min-width: 640px) {
+
+
+    body {
+        font-size: 1.5rem;
+    }
+    .friends div {
+        margin: 1em auto;
+        width: clamp(100px, 40vh, 300px);
+        height: clamp(100px, 40vw, 250px);
+    }
+}
+
+@media screen and (min-width: 786px) {
+
+    .friends div {
+        margin: 1em auto;
+        width: clamp(100px, 45vh, 350px);
+        height: clamp(100px, 45vw, 270px);
+    }
+}
+
+@media screen and (min-width: 930px) {
+    .friends div {
+        margin: 1em auto;
+        width: clamp(100px, 50vh, 400px);
+        height: clamp(100px, 50vw, 300px);
+    }
+    .friends div
+    button {
+        padding: .2em;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .friends div {
+        margin: 1em auto;
+        width: clamp(100px, 50vh, 450px);
+        height: clamp(100px, 50vw, 300px);
+    }
+}
